@@ -1,0 +1,7 @@
+.tags {
+    filter: invert(1);
+}
+
+.untags {
+    filter: invert(0);
+}

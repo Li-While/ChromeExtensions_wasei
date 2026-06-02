@@ -1,0 +1,72 @@
+{
+    "manifest_version": 3,
+    "name": "蛙思诶",
+    "description": "辅助百度搜索引擎生成知识图谱.拓展思维.",
+    "version": "1.0",
+    "action": {
+        "default_title": "蛙思诶",
+        "default_popup": "templates/popup.html",
+        "default_icon": {
+            "16": "static/img/logo.png",
+            "32": "static/img/logo.png",
+            "48": "static/img/logo.png",
+            "128": "static/img/logo.png"
+        }
+    },
+    "icons": {
+        "16": "static/img/logo.png",
+        "32": "static/img/logo.png",
+        "48": "static/img/logo.png",
+        "128": "static/img/logo.png"
+    },
+    "options_ui": {
+        "page": "templates/option.html",
+        "open_in_tab": false
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "notifications",
+        "tabs",
+        "contextMenus",
+        "webRequest",
+        "tts",
+        "declarativeContent",
+        "nativeMessaging"
+    ],
+    "host_permissions": [
+        "http://127.0.0.1:5000/*",
+        "http://localhost:5000/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "css": [
+                "static/css/xuanfu.css",
+                "static/css/content.css"
+            ],
+            "js": [
+                "static/js/jquery-3.6.0.min.js",
+                "static/js/echarts.js",
+                "static/js/xuanfu.js",
+                "static/js/chart3.js",
+                "static/js/content.js"
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "static/font-awesome-4.7.0/css/font-awesome.min.css"
+            ],
+            "matches": [
+                "<all_urls>"
+            ]
+        }
+    ]
+}

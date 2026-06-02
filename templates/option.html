@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/popup.css">
+    <script src="../static/js/jscolor.min.js"></script>
+    <script src="../static/js/option.js"></script>
+    <style>
+        tbody {
+            border: 1.2px solid black;
+            border-radius: 15%;
+
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        ::-webkit-scrollbar {
+            z-index: 50;
+            width: 10px;
+            height: 3px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.1);
+            transition: all .2s;
+            height: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        :hover::-webkit-scrollbar-thumb {
+            transition: all .2s;
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        ::-webkit-scrollbar-corner {
+            display: none;
+        }
+
+        h2 {
+            text-align: left;
+        }
+
+        h3 {
+            padding-left: 20px;
+        }
+
+        select {
+            background-color: rgb(179, 250, 253);
+            color: black;
+            border-width: 2px;
+        }
+
+        input {
+            margin: 2px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            overflow: hidden;
+            width: 160px;
+            height: 17px;
+            outline: none;
+            background: rgb(179, 250, 253);
+            border: 1.2px solid black;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            position: relative;
+            width: 10px;
+            height: 10px;
+            background: black;
+            border-radius: 50%;
+            transition: .2s;
+        }
+
+        input[type="range"]:active::-webkit-slider-thumb:before,
+
+        input[type="range"]:active::-webkit-slider-thumb:after {
+            top: 6px;
+        }
+
+        input[type="range"]:active::-webkit-slider-thumb {
+            width: 16px;
+            height: 16px;
+        }
+
+        input[type="range"]:active::-webkit-slider-thumb:after {
+            left: 16px;
+        }
+
+        input[type=checkbox] {
+            cursor: pointer;
+            position: relative;
+        }
+
+        input[type=checkbox]::after {
+            position: absolute;
+            top: 0;
+            background-color: rgb(179, 250, 253);
+            color: rgb(179, 250, 253);
+            width: 12px;
+            height: 12px;
+            display: inline-block;
+            visibility: visible;
+            padding-left: 0px;
+            text-align: center;
+            content: ' ';
+            border-radius: 2px;
+            box-sizing: border-box;
+            border: 1.2px solid black;
+        }
+
+        input[type=checkbox]:checked::after {
+            content: "";
+            background-color: rgb(179, 250, 253);
+            border-color: black;
+            border-width: 1.2px;
+        }
+
+        input[type=checkbox]:checked::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 1.3px;
+            width: 3px;
+            height: 7px;
+            border: solid black;
+            border-width: 0 1.2px 1.2px 0;
+            transform: rotate(45deg);
+            z-index: 1;
+        }
+
+        input[type=button] {
+            background-color: rgb(179, 250, 253);
+
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            margin-bottom: 11px;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+            font-weight: 400;
+        }
+    </style>
+</head>
+
+<body style="background-color: rgb(179, 250, 253);">
+    <table cellpadding="3" cellspacing="0" width="370">
+        <thead>
+            <tr>
+                <th>
+                    <h2>General</h2>
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <h3>Language</h3>
+                </td>
+                <td>
+                    <select name="" id="language">
+                        <option value="English">English</option>
+                        <option value="Chinses">Chinses</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Font Size</h3>
+                </td>
+                <td>
+                    <input id="slider" type="range" min='14' max='18' step='0' value='0'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Rubbish Tackle</h3>
+                </td>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="button1" type="button" value="reset" style="margin-left: 96px;">
+                </td>
+                <td>
+                    <input id="button2" type="button" value="save" style="margin-left: 30px;">
+                </td>
+            </tr>
+        </tbody>
+
+        <thead>
+            <tr>
+                <th>
+                    <h2>Colors</h2>
+                </th>
+                <th>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <h3>Theme</h3>
+                </td>
+                <td>
+                    <input type="checkbox" name="" id="" checked="checked">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>Text</h3>
+                </td>
+                <td>
+                    <input type=" text" id="fontColor" class="jscolor" value="B3FAFD" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>HighLight Text</h3>
+                </td>
+                <td>
+                    <input type=" text" id="fontColor" class="jscolor" value="B3FAFD" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="button3" type="button" value="reset" style="margin-left: 96px;">
+                </td>
+                <td>
+                    <input id="button4" type="button" value="save" style="margin-left: 30px;">
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    <div id="popbox" style="width: 190px;height: 140px;position: relative;left: 90px;">
+        <img id="dian" src="../static/img/dian.png" alt="" style="position: absolute;top:4px;left:2px;width: 35%;">
+        <img id="close" src="../static/img/close.png"
+            style=" width: 35%;z-index: 2;position: absolute;top: 20px;left: 2px;"></img>
+        <img id="sousuo" src="../static/img/sousuo.png"
+            style="width: 35%;z-index: 2;position: absolute;top: -1px;left: 65px;"></img>
+        <img id="set" src="../static/img/set.png"
+            style="width: 35%;z-index: 2;position: absolute;top: 23px;left: 125px;"></img>
+        <img id="frog" src="../static/img/frog.png" style="width: 60%;position: absolute;top:-1px;width: 190px;"></img>
+        <div class="speech-bubble a speech-bubble-left1">
+            开/关灯
+        </div>
+        <div class="speech-bubble b speech-bubble-left2">
+            搜索
+        </div>
+        <div class="speech-bubble c speech-bubble-right1">
+            设置
+        </div>
+    </div>
+    <div class="footer">
+        CopyRight © <a href="#">蛙思诶</a> 2022
+    </div>
+</body>
+
+</html>

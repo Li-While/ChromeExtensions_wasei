@@ -1,0 +1,9 @@
+{
+    "name": "com.example.native",
+    "description": "My Native Messaging Host",
+    "path": "challenge.py",
+    "type": "stdio",
+    "allowed_origins": [
+        "chrome-extension://hhhfhbengblfhppmlcciiblhcphfafoi"
+    ]
+}

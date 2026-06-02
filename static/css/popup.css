@@ -1,0 +1,113 @@
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--white-color-background);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--color-background);
+    }
+}
+
+body {
+    background-color: rgba(245, 245, 245);
+}
+
+@keyframes example1 {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes example2 {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.speech-bubble {
+    display: inline-block;
+    display: none;
+    position: relative;
+    background-color: #292929;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    /* 垂直居中 */
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-family: sans-serif;
+    animation-name: example1;
+    animation-duration: 1s;
+}
+
+.a {
+    /* z-index: 5; */
+    /* margin-left: 100px; */
+    top: 71px;
+    left: 8px;
+}
+
+.b {
+    /* z-index: 4; */
+    /* margin-left: 232px; */
+    top: 46px;
+    left: 72px;
+}
+
+.c {
+    /* z-index: 6; */
+    /* margin-left: 100px; */
+    top: 71px;
+    left: 103px;
+}
+
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    border: 15px solid;
+}
+
+.speech-bubble-left1:after {
+    border-right-color: #86c3e7;
+    border-left-color: #86c3e7;
+    border-top-color: #86c3e7;
+    border-bottom-color: #292929;
+    bottom: 100%;
+    right: 50%;
+    margin-top: 20px;
+}
+
+.speech-bubble-left2:after {
+    border-right-color: #86c3e7;
+    border-left-color: #86c3e7;
+    border-top-color: #86c3e7;
+    border-bottom-color: #292929;
+    bottom: 100%;
+    right: 50%;
+    margin-top: -15px;
+}
+
+.speech-bubble-right1:after {
+    border-right-color: #86c3e7;
+    border-left-color: #86c3e7;
+    border-top-color: #86c3e7;
+    border-bottom-color: #292929;
+    bottom: 100%;
+    left: 50%;
+    margin-top: -15px;
+}

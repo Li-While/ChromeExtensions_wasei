@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>draft</title>
+  <script src="../static/js/jquery.js"></script>
+  <script src="../static/js/echarts.js"></script>
+  <script src="../static/assets/js/vue.js"></script>
+  <script src="../static/assets/js/axios.js"></script>
+  <script src="../static/js/xuanfu.js"></script>
+  <link rel="stylesheet" href="../static/css/xuanfu.css">
+  <script src="../static/js/echarts.js"></script>
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <script>
+    var data = {{ data | safe }}
+  </script>
+  <div class="container" id="app">
+    <div style="float:left;">
+      <input id="kw" placeholder="请输入搜索条件" style="width: 100px " v-model="myselect">
+      <button @click="searchPost">搜索</button>
+    </div>
+  </div>
+  <div id="explain" data-bs-toggle="modal" data-bs-target="#myModal">点击节点后再点这里</div>
+  <!-- 模态框 -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- 模态框头部 -->
+        <div class="modal-header">
+          <h4 class="modal-title">
+            <div class="modal_name">标题</div>
+          </h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <!-- 模态框内容 -->
+        <div class="modal-body">
+          <div class="modal_desc">内容1</div>
+          <div class="modal_easyget">内容2</div>
+          <div class="modal_curelasttime">内容3</div>
+          <div class="modal_department">内容4</div>
+          <div class="modal_cause">内容5</div>
+          <div class="modal_prevent">内容6</div>
+        </div>
+
+        <!-- 模态框底部 -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="chart3" style="width: 500px;height: 500px;"></div>
+  <script src="../static/js/chart3.js" type="text/javascript">
+  </script>
+
+  <script type="text/javascript">
+    // var input = document.querySelector('#kw');
+    // console.log(input.value);
+    // input.onblur = function () {
+    //     var value = input.value
+    //     console.log(value);
+    // }
+    var app1 = new Vue({
+      el: "#app",
+      data: {
+        myselect: document.querySelector('#kw').value
+      },
+      methods: {
+        searchPost: function () {
+          axios.post('/', { k: this.myselect })
+            .then(  // .then 后端返回逻辑
+              function (res) {
+                // console.log(res.data.result.categories);
+                // console.log(res.data.result.links);
+                // console.log(res.data.result.nodes);
+                draw(res.data.result);
+              },
+              function () {  //  失败时操作函数
+                alert("POST error!!!!");
+              }
+            )
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+<!-- options为右键本插件点击选项的界面(即设置页面) -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../static/js/jquery-3.6.0.min.js"></script>
+    <!--引入 element-ui 的样式，-->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 必须先引入vue，  后使用element-ui -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <!-- 引入element 的组件库-->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <title>设置</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 60px;
+            /* border: 1px solid black; */
+            padding-right: 50px;
+            z-index: 10;
+            background-color: #fff;
+            box-shadow: 0 1px 6px rgb(64 106 122 /32%);
+        }
+
+        .top img {
+            float: left;
+            width: 50px;
+            margin-top: 5px;
+            margin-left: 20px;
+        }
+
+        .top i {
+            float: left;
+            line-height: 60px;
+            margin-left: 5px;
+        }
+
+        .guanyu,
+        .sezhi {
+            position: absolute;
+            top: 10px;
+        }
+
+        .guanyu {
+            right: 80px;
+        }
+
+        .sezhi {
+            right: 220px;
+        }
+
+        .general {
+            margin-top: 60px;
+            width: 100%;
+            height: 300px;
+            /* background-color: aqua; */
+            position: relative;
+        }
+
+        .general p,
+        .colors p {
+            position: absolute;
+            font-size: 30px;
+            top: 20px;
+            left: 73px;
+        }
+
+        .general_one,
+        .colors_one {
+            position: absolute;
+            top: 50px;
+            left: 400px;
+        }
+
+        .general_one li,
+        .general_two li,
+        .colors_one li,
+        .colors_two li {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .one_button {
+            position: absolute;
+            bottom: 43px;
+            left: 400px;
+        }
+
+        .two_button {
+            position: absolute;
+            bottom: 43px;
+            left: 483px;
+        }
+
+        .general_two,
+        .colors_two {
+            position: absolute;
+            top: 50px;
+            left: 800px;
+        }
+
+        .one_select {
+            height: 23px;
+        }
+
+        .add {
+            font-size: 14px;
+            border: 1px solid black;
+            height: 23px;
+        }
+
+        .button_add {
+            position: absolute;
+            top: 46px;
+            right: -17px;
+            height: 23px;
+        }
+
+        .button_jian {
+            position: absolute;
+            top: 46px;
+            right: -34px;
+            height: 23px;
+        }
+
+        .general_a {
+            display: block;
+            width: 167px;
+            height: 23px;
+            padding-left: 60px;
+            font-size: 14px;
+            /* background-color: red; */
+            border: 1px solid #666;
+        }
+
+        .colors {
+            position: relative;
+            width: 100%;
+            height: 260px;
+            /* background-color: aquamarine; */
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 10px;
+            margin-bottom: 11px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            <img src="../static/img/logo.png" alt="">
+            <i>ThoughtFulFrog</i>
+            <!-- <div>关于</div> -->
+            <!-- <div>设置</div> -->
+            <el-button type="primary" class="guanyu" plain>关于</el-button>
+            <el-button type="primary" class="sezhi" plain>设置</el-button>
+        </div>
+        <div class="general">
+            <p>General</p>
+            <ul class="general_one">
+                <li>language</li>
+                <li>Font Size</li>
+                <li>DownLoad</li>
+                <li>Rubbish Tackle</li>
+            </ul>
+            <!-- <button class="one_button">重置</button> -->
+            <el-button type="primary" size="mini" class="one_button" round>重置</el-button>
+            <el-button type="primary" size="mini" class="two_button" round>保存</el-button>
+            <ul class="general_two">
+                <li>
+                    <select class="one_select" name="" id="">
+                        <option value="">English</option>
+                        <option value="">Chinses</option>
+                    </select>
+                </li>
+                <li>
+                    <el-input-number v-model="num" size="mini" placeholder="请输入内容"></el-input-number>
+                </li>
+                <li>
+                    <a class="general_a" href="">下载</a>
+                </li>
+                <li>
+                    <el-checkbox v-model="checked">Use it(on/off)</el-checkbox>
+                </li>
+            </ul>
+        </div>
+        <div class="colors">
+            <p>Colors</p>
+            <ul class="colors_one">
+                <li>Theme</li>
+                <li>Text</li>
+                <li>Highlight Text</li>
+            </ul>
+            <el-button type="primary" size="mini" class="one_button" round>重置</el-button>
+            <el-button type="primary" size="mini" class="two_button" round>保存</el-button>
+            <ul class="colors_two">
+                <li>
+                    <el-checkbox v-model="checked">Day & Night Modes</el-checkbox>
+                </li>
+                <li>
+                    <!-- 放掉色版1 -->
+                </li>
+                <li>
+                    <!-- 放掉色版2 -->
+                </li>
+            </ul>
+        </div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div>占位</div>
+        <div class="footer">
+            CopyRight © <a href="#">蛙思诶</a> 2022
+        </div>
+    </div>
+    <script>
+        new Vue({
+            //    此处指向vue组件所要渲染的DOM标签 <div id="box"></div>   el:'#box'  用id属性标识 也可用class属性
+            // 如果是class <div class="box"></div>   el:'.box' 
+            // 总之最外层div用class或id绑定js ，下面el对应body对外层div选择器名称，绑定之后才可以使用elementui中组件内容
+            el: '.box',
+            data() {
+                return {
+                    num: 1
+                };
+            },
+            methods: {
+                handleChange(value) {
+                    // console.log(value);
+                }
+            }
+        })
+    </script>
+    <script>
+        export default {
+            data() {
+                return {
+                    checked: true
+                };
+            }
+        };
+    </script>
+
+</body>
+
+</html>
